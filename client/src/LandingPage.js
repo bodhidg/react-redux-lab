@@ -1,3 +1,4 @@
+import 'material-design-lite/material';
 function LandingPage() {
     console.log("This is inside Landing Page function!");
     return (<>

@@ -1,3 +1,7 @@
+import React from 'react';
+import { actions } from '../store/actions';
+import { store } from '../store/store';
+
 function Login() {
     console.log("This is inside Login function!");
     return (<section style={styles.wrapper} className="mdl-card mdl-shadow--2dp">
@@ -29,6 +33,16 @@ function Login() {
             </form>
         </div>
     </section>);
+
+
+    function login(e) {
+        e.preventDefault();
+        store.dispatch(actions.login({
+            email: e.target['email'].value,
+            password: e.target['password'].value
+        }));
+    }
+
 }
 
 export default Login

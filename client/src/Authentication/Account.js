@@ -1,3 +1,7 @@
+import React from 'react';
+import { store } from '../store/store';
+import { actions } from '../store/actions';
+
 function Account() {
     console.log("This is inside Account function!");
     return (<section style={styles.wrapper} className="mdl-card mdl-shadow--2dp">
@@ -66,6 +70,23 @@ function Account() {
             </form>
         </div>
     </section>);
+
+    function register(e) {
+        e.preventDefault();
+        const user = {
+            email: e.target['email'].value,
+            password: e.target['password'].value,
+            name: { given: e.target['given'].value, family: e.target['family'].value },
+            phone: e.target['phone'].value,
+            credit_card: {
+                number: e.target['number'].value,
+                expiration: e.target['expiration'].value
+            },
+        };
+        store.dispatch(actions.register(user));
+    }
+
+
 }
 
 export default Account
